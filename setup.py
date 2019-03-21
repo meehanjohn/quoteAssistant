@@ -9,8 +9,8 @@ with open("requirements.txt",'r') as f:
 config = {
     'description': 'Quote Assistant',
     'author': 'John Meehan',
-    'url': 'URL to get it at.',
-    'download_url': 'Where to download it.',
+    'url': 'https://github.com/meehanjohn/quoteAssistant',
+    'download_url': 'https://github.com/meehanjohn/quoteAssistant.git',
     'author_email': 'jmeehan@amuneal.com',
     'version': '0.1',
     'install_requires': requirements,
