@@ -3,18 +3,7 @@ from pathlib import Path
 
 def make_table(output_file):
     try:
-<<<<<<< HEAD
-        try:
-            excel = win32.gencache.EnsureDispatch('Excel.Application')
-        except AttributeError:
-            f_loc = r'C:\Users\Amuneal\AppData\Local\Temp\gen_py'
-            for f in Path(f_loc):
-                Path.unlink(f)
-            Path.rmdir(f_loc)
-            xl = win32.gencache.EnsureDispatch('Excel.Application')
-=======
         excel = win32.dynamic.Dispatch('Excel.Application')
->>>>>>> tableconvert
         wb = excel.Workbooks.Open(output_file)
         excel.Visible = False
     except Exception as e:
