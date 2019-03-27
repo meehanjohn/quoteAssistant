@@ -1,8 +1,9 @@
 import win32com.client as win32
+from pathlib import Path
 
 def make_table(output_file):
     try:
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        excel = win32.dynamic.Dispatch('Excel.Application')
         wb = excel.Workbooks.Open(output_file)
         excel.Visible = False
     except Exception as e:
