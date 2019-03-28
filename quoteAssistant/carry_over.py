@@ -5,59 +5,68 @@ def carry_over(materials,operations,subcontracts,output_file):
     matls_table = pd.DataFrame(materials)
     subs_table = pd.DataFrame(subcontracts)
 
-    ops_header = ['col'+str(i) for i in range(ops_table.shape[1]-1)]
-    ops_header[:18] = ['subassembly',
-                       'row',
-                       'op_desc',
-                       'resource_grp',
-                       'qty',
-                       'col1',
-                       'col2',
-                       'col3',
-                       'col4',
-                       'col5',
-                       'col6',
-                       'col7',
-                       'col8',
-                       'col9',
-                       'op_id',
-                       'col10',
-                       'setup',
-                       'labor',
-                       'col11']
+    if ops_table.shape[1]>0:
+        ops_header = ['col'+str(i) for i in range(ops_table.shape[1]-1)]
+        ops_header[:18] = ['subassembly',
+                           'row',
+                           'op_desc',
+                           'resource_grp',
+                           'qty',
+                           'col1',
+                           'col2',
+                           'col3',
+                           'col4',
+                           'col5',
+                           'col6',
+                           'col7',
+                           'col8',
+                           'col9',
+                           'op_id',
+                           'col10',
+                           'setup',
+                           'labor',
+                           'col11']
+    else:
+        ops_header=None
 
-    matls_header = ['col'+str(i) for i in range(matls_table.shape[1]-1)]
-    matls_header[:11] = ['subassembly',
-                         'row',
-                         'desc1',
-                         'desc2',
-                         'col1',
-                         'col2',
-                         'qty',
-                         'col4',
-                         'col5',
-                         'col6',
-                         'ext_cost',
-                         'comment']
+    if matls_table.shape[1]>0:
+        matls_header = ['col'+str(i) for i in range(matls_table.shape[1]-1)]
+        matls_header[:11] = ['subassembly',
+                             'row',
+                             'desc1',
+                             'desc2',
+                             'col1',
+                             'col2',
+                             'qty',
+                             'col4',
+                             'col5',
+                             'col6',
+                             'ext_cost',
+                             'comment']
+    else:
+        matls_header=None
 
-    subs_header = ['col'+str(i) for i in range(subs_table.shape[1]-1)]
-    subs_header[:16] = ['subassembly',
-                        'row',
-                        'op_desc',
-                        'resource_grp',
-                        'vendor',
-                        'col1',
-                        'qty',
-                        'unit_cost',
-                        'ext_cost',
-                        'col2',
-                        'col3',
-                        'col4',
-                        'col5',
-                        'col6',
-                        'col7',
-                        'op_id',
-                        'resource_id']
+    if subs_table.shape[1]>0:
+        subs_header = ['col'+str(i) for i in range(subs_table.shape[1]-1)]
+        subs_header[:16] = ['subassembly',
+                            'row',
+                            'op_desc',
+                            'resource_grp',
+                            'vendor',
+                            'col1',
+                            'qty',
+                            'unit_cost',
+                            'ext_cost',
+                            'col2',
+                            'col3',
+                            'col4',
+                            'col5',
+                            'col6',
+                            'col7',
+                            'op_id',
+                            'resource_id']
+    else:
+        subs_header=None
     #TODO: figure out proper subcontract header tables
 
 
