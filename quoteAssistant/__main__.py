@@ -34,7 +34,7 @@ def main():
             job_entry_book.Close(True)
 
             carry_over(materials,operations,subcontracts,output_file)
-            #make_table(output_file)
+            make_table(output_file)
 
             print("{} complete".format(output_file))
 

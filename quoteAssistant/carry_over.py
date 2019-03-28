@@ -5,39 +5,44 @@ def carry_over(materials,operations,subcontracts,output_file):
     matls_table = pd.DataFrame(materials)
     subs_table = pd.DataFrame(subcontracts)
 
-    ops_header = ['Subassembly',
-                  'Row',
-                  'Op Desc',
-                  'Resource Group',
-                  'Qty',
-                  'Col1',
-                  'Col2',
-                  'Col3',
-                  'Col4',
-                  'Col5',
-                  'Col6',
-                  'Col7',
-                  'Col8',
-                  'Col9',
-                  'Op ID',
-                  'Col10'
-                  'Setup'
-                  'Labor',
-                  'Col11']
-                  
-    matls_header = ['Subassembly',
-                    'Row',
-                    'Desc1',
-                    'Desc2',
-                    'Col1',
-                    'Col2',
-                    'Qty',
-                    'Col4',
-                    'Col5',
-                    'Col6',
-                    'Ext Cost',
-                    'Comment']
+    ops_header = ['col'+str(i) for i in range(ops_table.shape[1]-1)]
+    ops_header[:18] = ['subassembly',
+                       'row',
+                       'op_desc',
+                       'resource_grp',
+                       'qty',
+                       'col1',
+                       'col2',
+                       'col3',
+                       'col4',
+                       'col5',
+                       'col6',
+                       'col7',
+                       'col8',
+                       'col9',
+                       'op_id',
+                       'col10',
+                       'setup',
+                       'labor',
+                       'col11']
+
+    matls_header = ['col'+str(i) for i in range(matls_table.shape[1]-1)]
+    matls_header[:11] = ['subassembly',
+                         'row',
+                         'desc1',
+                         'desc2',
+                         'col1',
+                         'col2',
+                         'qty',
+                         'col4',
+                         'col5',
+                         'col6',
+                         'ext_cost',
+                         'comment']
+
+    subs_header = ['col'+str(i) for i in range(subs_table.shape[1]-1)]
     subs_header = None
+    #TODO: figure out proper subcontract header tables
 
 
     with pd.ExcelWriter(output_file) as writer:
