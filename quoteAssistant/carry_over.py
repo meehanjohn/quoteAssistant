@@ -41,7 +41,23 @@ def carry_over(materials,operations,subcontracts,output_file):
                          'comment']
 
     subs_header = ['col'+str(i) for i in range(subs_table.shape[1]-1)]
-    subs_header = None
+    subs_header[:16] = ['subassembly',
+                        'row',
+                        'op_desc',
+                        'resource_grp',
+                        'vendor',
+                        'col1',
+                        'qty',
+                        'unit_cost',
+                        'ext_cost',
+                        'col2',
+                        'col3',
+                        'col4',
+                        'col5',
+                        'col6',
+                        'col7',
+                        'op_id',
+                        'resource_id']
     #TODO: figure out proper subcontract header tables
 
 

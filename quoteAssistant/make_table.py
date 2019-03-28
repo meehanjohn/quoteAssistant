@@ -35,6 +35,9 @@ def make_table(output_file):
 
     prod_std = pivot_field('prod_std',pivot_table,number_format='0.000')
 
+    wb.Save
+    wb.Close(True)
+
     #TODO: materials table
     #TODO: subcontracts table
 
