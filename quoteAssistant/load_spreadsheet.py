@@ -11,7 +11,8 @@ def load_spreadsheet(file=None):
 
     except Exception as e:
         print(e)
-        return
+        wb.Close(True)
+        quit()
 
     finally:
         excel.Visible = False
