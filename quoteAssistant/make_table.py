@@ -1,5 +1,4 @@
 import win32com.client as win32
-from pathlib import Path
 
 def make_table(output_file):
     try:
