@@ -6,10 +6,9 @@ def carry_over(materials,operations,subcontracts,output_file):
     convert_dict = pd.Series(ref_df.epicor_op_id.values,
                              index=ref_df.vantage_op_desc).to_dict()
 
-    #.dropna(index=1)
-    ops_table = pd.DataFrame(operations)
-    matls_table = pd.DataFrame(materials)
-    subs_table = pd.DataFrame(subcontracts)
+    ops_table = pd.DataFrame(operations).dropna(axis=1)
+    matls_table = pd.DataFrame(materials).dropna(axis=1)
+    subs_table = pd.DataFrame(subcontracts).dropna(axis=1)
 
     vantage_check = set(['Setup Hours',
                          'Labor Hours',
@@ -99,5 +98,5 @@ def carry_over(materials,operations,subcontracts,output_file):
                              index=False)
         subs_table.to_excel(writer,
                             sheet_name='subcontract_entry',
-                            header=None,
+                            header=subs_header,
                             index=False)

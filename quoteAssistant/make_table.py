@@ -4,7 +4,6 @@ def make_table(output_file):
     try:
         excel = win32.dynamic.Dispatch('Excel.Application')
         wb = excel.Workbooks.Open(output_file)
-        excel.DisplayAlerts = False
         excel.Visible = False
     except Exception as e:
         print(e)
@@ -16,12 +15,12 @@ def make_table(output_file):
 
     operations_pivot = wb.Worksheets['operations_pivot']
 
-    c = win32.constants
-
-    pivot_cache = wb.PivotCaches().Create(SourceType=c.xlDatabase,
-                                          SourceData=op_entry_sheet.UsedRange)
+    pivot_cache = wb.PivotCaches().Create(SourceType=win32.constants.xlDatabase,
+                                                      SourceData=op_entry_sheet.UsedRange)
 
     pivot_table = pivot_cache.CreatePivotTable(TableDestination=operations_pivot.Range("A1"))
+
+    c = win32.constants
 
     subassembly = pivot_field('subassembly',pivot_table,'Page')
     op_id = pivot_field('op_id',pivot_table,'Row')
