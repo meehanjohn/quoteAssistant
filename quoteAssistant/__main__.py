@@ -29,7 +29,6 @@ def main():
             excel_open = bool(excel.Workbooks.Count)
         except:
             time.sleep(5)
-        print(excel_open)
 
     df = pd.read_csv(str(path)+'\\..\\docs\\job_entry.csv')
 
