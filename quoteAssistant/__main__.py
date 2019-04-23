@@ -2,24 +2,36 @@ import pandas as pd
 from quoteAssistant import *
 import win32com.client as win32
 from gooey import Gooey, GooeyParser
+import os.path
+import time
 
-#@Gooey
 def main():
     """ Inputs are currently defined by maintaining a simple CSV
     containing the Sales Order number and server filepath where
     quotes are located."""
 
-    #parser = GooeyParser(description="Quote Assistant")
-    #parser.add_argument('Input_Directory',
-                        #help="Location of Quote(s):",
-                        #widget='DirChooser')
-    #parser.add_argument('SO_Number',
-                        #widget='TextField')
+    path = os.path.abspath(os.path.dirname(__file__))
 
-    #args = parser.parse_args()
+    try:
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        excel.DisplayAlerts = False
+        input_csv = excel.Workbooks.Open(str(path)+'\\..\\docs\\job_entry.csv')
+        excel.Visible = True
 
+    except Exception as e:
+        print(e)
+        quit()
 
-    df = pd.read_csv('docs\\job_entry.csv')
+    excel_open = bool(excel.Workbooks.Count)
+
+    while excel_open:
+        try:
+            excel_open = bool(excel.Workbooks.Count)
+        except:
+            time.sleep(5)
+        print(excel_open)
+
+    df = pd.read_csv(str(path)+'\\..\\docs\\job_entry.csv')
 
     for index, row in df.iterrows():
         job_files = create_job_list(row[0], row[1])
