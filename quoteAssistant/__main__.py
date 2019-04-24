@@ -1,7 +1,6 @@
 import pandas as pd
 from quoteAssistant import *
 import win32com.client as win32
-from gooey import Gooey, GooeyParser
 import os.path
 import time
 
