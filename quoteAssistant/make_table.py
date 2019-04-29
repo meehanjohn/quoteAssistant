@@ -2,10 +2,15 @@ import win32com.client as win32
 
 def make_table(output_file):
     try:
-        excel = win32.dynamic.Dispatch('Excel.Application')
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+        except:
+            excel = win32.Dispatch('Excel.Application')
+
         wb = excel.Workbooks.Open(output_file)
         excel.DisplayAlerts = False
         excel.Visible = False
+
     except Exception as e:
         print(e)
         wb = None

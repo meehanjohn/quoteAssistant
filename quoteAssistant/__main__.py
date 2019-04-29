@@ -12,7 +12,11 @@ def main():
     path = os.path.abspath(os.path.dirname(__file__))
 
     try:
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+        except:
+            excel = win32.dynamic.Dispatch('Excel.Application')
+
         excel.DisplayAlerts = False
         input_csv = excel.Workbooks.Open(str(path)+'\\..\\docs\\job_entry.csv')
         excel.Visible = True

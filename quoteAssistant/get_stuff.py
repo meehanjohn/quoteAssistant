@@ -1,5 +1,3 @@
-import win32com.client as win32
-
 def materials(sheet_index,sheet_name,sheet_obj):
     range = sheet_obj.UsedRange.Rows
     sheet_values = [list(row.Value2[0]) for row in range if type(row.Value2) is tuple]
