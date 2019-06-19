@@ -11,6 +11,9 @@ def main():
 
     path = os.path.abspath(os.path.dirname(__file__))
 
+# Folder location in case of failure:
+# C:\Users\Amuneal\AppData\Local\Temp\gen_py\3.7
+
     try:
         try:
             excel = win32.gencache.EnsureDispatch('Excel.Application')
@@ -51,6 +54,8 @@ def main():
             make_table(output_file)
 
             print("{} complete".format(output_file))
+
+    excel.Quit()
 
 if __name__ == "__main__":
 	main()
